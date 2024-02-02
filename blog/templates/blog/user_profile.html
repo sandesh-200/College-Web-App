@@ -1,0 +1,23 @@
+{% extends "blog/basic.html" %}
+
+{% block title %} {{user.first_name}} {{user.last_name}} - Profile {% endblock title %}
+
+{% block body %}
+
+<div class="container my-3">
+<div class="jumbotron row">
+  <div class="prof_image col">
+  <img src="" alt="">
+</div>
+<div class="stud_desc col">
+    <h1 class="display-4 ">{{ user.first_name }} {{user.last_name}}</h1>
+    <p class="lead">{{user.faculty}}
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </div>
+  </div>
+</div>
+
+{% endblock body %}
+
+

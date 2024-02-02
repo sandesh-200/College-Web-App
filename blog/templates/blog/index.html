@@ -1,0 +1,113 @@
+{% extends 'blog/basic.html' %}
+{% load static %}
+{% block title %}COL-WEB{% endblock %}
+
+<!-- CAROUSEL STARTS HERE -->
+{%block body%} 
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <img class="first-slide" src="{% static 'blog/img/carousel1.jpg' %}" alt="First slide">
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>We Are With You!</h1>
+            <p>Unlocking Potential, Fostering Growth: Our College, Your Canvas for Success.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Join Us</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item active">
+        <img class="second-slide" src="{% static 'blog/img/carousel2.jpg' %}" alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Library</h1>
+            <p>Unlock the door to endless possibilities: our library is not just a sanctuary of books, but a gateway to knowledge, inspiration, and the boundless potential that education holds.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Visit</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="third-slide" src="{% static 'blog/img/carousel3.jpg' %}" alt="Third slide">
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>Outside the Classroom</h1>
+            <p>In our halls of academia, the playing field is just as important as the lecture hall. Join us in celebrating the triumphs of mind and body.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Kick Off</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+     <!-- BLOG STARTS here -->
+     <div class="container marketing my-5">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'blog/img/academic_rep.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Academic Reputation</h2>
+            <p>The academic reputation of a college is a crucial factor that reflects its standing in the educational community. It encompasses the quality of faculty, research output, student achievements, and overall educational excellence. A strong academic reputation attracts top-tier faculty and talented students, contributing to the institution's credibility and influence in the academic world.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'blog/img/globe.png' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Global Perspective</h2>
+            <p>A college with a global perspective embraces diversity, fosters international collaboration, and prepares students to navigate an interconnected world. Through diverse curricula, cultural exchange programs, and global partnerships, it cultivates a holistic educational experience that equips students with the skills and perspectives needed to thrive in a rapidly evolving global landscape.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'blog/img/career.png' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Career Services</h2>
+            <p>The Career Services at our college are dedicated to empowering students with the skills and resources needed for successful career development. Our team provides personalized guidance, organizes workshops, and facilitates networking opportunities to help students explore their interests, build a strong professional foundation, and seamlessly transition into the workforce.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+          
+        </div><!-- /.row -->
+
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Words From Our Professor <span class="text-muted">Walter Lewin</span></h2>
+              <p class="lead">As a seasoned professor with a passion for fostering intellectual curiosity, I am dedicated to creating an engaging and collaborative learning environment. Through years of teaching and research, I bring a wealth of knowledge to the classroom, aiming to inspire critical thinking and a lifelong love for learning in my students. My commitment extends beyond traditional lectures, incorporating innovative teaching methods and real-world applications to ensure a well-rounded educational experience. I look forward to guiding the next generation of thinkers and contributing to the academic excellence of our institution.</p>
+            </div>
+            <div class="col-md-5">
+              <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{% static 'blog/img/walter_l.jpg' %}" data-holder-rendered="true" style="width: 500px; height: 500px;">
+            </div>
+          </div>
+
+          <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading">Our Former Alumini <span class="text-muted">Elizabeth Gholsing</span></h2>
+              <p class="lead">After four transformative years at WEB College, I emerge as a well-rounded individual equipped with both academic knowledge and invaluable life skills. The guidance of accomplished professors and the diverse community of peers has cultivated a rich learning environment. Engaging in research projects, internships, and extracurricular activities has not only enhanced my academic prowess but also honed my leadership and teamwork abilities. As I graduate, I am confident that the experiences and education I gained here will serve as a strong foundation for my future endeavors.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+              <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{% static 'blog/img/graduate.jpg' %}" data-holder-rendered="true" style="width: 500px; height: 500px;">
+            </div>
+          </div>
+
+          <div class="row featurette my-5">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">POV <span class="text-muted">James D. Watson</span></h2>
+              <p class="lead">It is with great enthusiasm that I extend my appreciation for the innovative and dynamic academic environment that your institution fosters. As a scientist deeply committed to pushing the boundaries of knowledge, I am impressed by the strong emphasis on research opportunities, cutting-edge facilities, and the exceptional faculty that your college boasts. The commitment to academic excellence and the nurturing of inquisitive minds align seamlessly with my research aspirations. I am eager to contribute to and thrive within the vibrant scientific community at your esteemed institution.</p>
+            </div>
+            <div class="col-md-5">
+              <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{% static 'blog/img/watson.jpg' %}" data-holder-rendered="true" style="width: 500px; height: 500px;">
+            </div>
+          </div>
+
+          {% endblock %}
+</html>

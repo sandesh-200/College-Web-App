@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'blog/css/index.css' %}" />
+  <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+  <!-- NAVBAR STARTS here -->
+
+  <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd">
+    <a class="navbar-brand" href="/">COLWEB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog-about' %}">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog-contact' %}">Contact Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Faculties
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Science</a>
+            <a class="dropdown-item" href="#">Management</a>
+            <a class="dropdown-item" href="#">Arts</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Others</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog-notice' %}">Notice</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 mx-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">
+          Search
+        </button>
+      </form>
+{% if user.is_authenticated %}
+<div class="dropdown" style="min-width:133px;">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{request.user}}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left:-22px;">
+    <a class="dropdown-item" href="/user_profile">Profile</a>
+    <a class="dropdown-item" href="/handlelogout/">Logout</a>
+  </div>
+</div>
+      {% else %}
+
+      <!--SignUp Button trigger -->
+      <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#registerModal">
+        Register
+      </button>
+
+            <!--SignUp Modal -->
+            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">
+                    Register As Student
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+    
+                  <form action="/handleReg/" method="post">{% csrf_token %}
+                    <div class="row">
+                      <div class="col my-2">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your first name" name="fname" required>
+                      </div>
+                      <div class="col my-2">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your last name" name="lname" required>
+                      </div>
+                    </div>
+                    <div class="col my-2">
+                      <label for="fname">Faculty</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="faculty_option" id="faculty_option" value="Sacience">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Science
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="faculty_option" id="faculty_option" value="Management">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Management
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="faculty_option" id="faculty_option" value="Arts">
+                        <label class="form-check-label" for="flexRadioDefault1"> 
+                          Arts
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group my-2">
+                      <label for="username">Usernmae</label>
+                      <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
+                        placeholder="Create username" name="username" required>
+                    </div>
+                    <div class="form-group my-2">
+                      <label for="email">Email address</label>
+                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        placeholder="Enter email" name="email" required>
+                      <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group my-2">
+                      <label for="password1">Password</label>
+                      <input type="password" class="form-control" id="password1" placeholder="Password" name="password1"
+                        required>
+                    </div>
+                    <div class="form-group my-2">
+                      <label for="password1">Confirm Password</label>
+                      <input type="password" class="form-control" id="password2" placeholder="Confirm password"
+                        name="password2" required>
+                    </div>
+                    <button type="button" class="btn btn-secondary my-2" data-dismiss="modal">
+                      Close
+                    </button>
+                    <button type="submit" class="btn btn-primary my-2">
+                      Save changes
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!--Login Button trigger -->
+      <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#loginModal">
+        Login
+      </button>
+
+      
+      <!--Login Modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Login
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/handleLogin/" method="post">{% csrf_token %}
+                <div class="form-group my-2">
+                  <label for="login_username">Username</label>
+                  <input type="text" class="form-control" id="login_username"
+                    placeholder="Your Username" name="login_username" required>
+                </div>
+                <div class="form-group my-2">
+                  <label for="login_password">Password</label>
+                  <input type="password" class="form-control" id="login_password" placeholder="Password" name="login_password"
+                    required>
+                </div>
+                <button type="submit" class="btn btn-primary my-2">
+                  Login
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+
+    </div>
+  </nav>
+
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %} {% endif %} {% block body %} {% endblock %}
+
+  <div class="feet">
+    <hr />
+    <footer class="container">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p>
+        @COLWEB INS.PVT.LTD <a href="#"> Privacy</a> · <a href="#">Terms</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  {% block js %} {% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
