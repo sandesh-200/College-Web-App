@@ -12,6 +12,7 @@
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
   <link rel="stylesheet" href="{% static 'blog/css/index.css' %}" />
   <title>{% block title %} {% endblock %}</title>
+  <style>{% block css %}{% endblock %}</style>
 </head>
 
 <body>
@@ -66,6 +67,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left:-22px;">
     <a class="dropdown-item" href="/user_profile">Profile</a>
     <a class="dropdown-item" href="/handlelogout/">Logout</a>
+
   </div>
 </div>
       {% else %}

@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 # Create your models here.
 
 class Notice(models.Model):
@@ -18,9 +17,12 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
     
-class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    faculty = models.CharField(max_length = 225)
+class Picture(models.Model):
+    user_image = models.ImageField(upload_to="user_images") 
+
+    
+
+    
     
     
 

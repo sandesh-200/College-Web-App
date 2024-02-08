@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Notice
 from .models import Contact
+from .models import Picture
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -92,7 +93,12 @@ def handlelogout(request):
     return redirect('/')
     
 def user_profile(request):
-    return render(request,"blog/user_profile.html")
+    if request.method == 'POST':
+        prof_img = request.POST['profile_image']
+        pic = Picture(user_image = prof_img)
+        messages.success(request, 'Your form has been submitted successfully!')
+    profile_pic = Picture.objects.all()
+    return render(request,"blog/user_profile.html",{'profile_pic':profile_pic})
 
 
     
